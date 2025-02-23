@@ -1,0 +1,65 @@
+.gallery-plates {
+  color: #fff;
+}
+
+.gallery-plates ul {
+  padding: 0;
+  margin: 20px -20px;
+  list-style: none;
+}
+
+.gallery-plates li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: auto;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ccc;
+  background-color: #fff;
+  list-style-type: none;
+}
+
+.gallery-plates li:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.gallery-plates li:hover {
+  background-color: #dbe4f8;
+}
+
+.gallery-plates button {
+  background-color: #fff;
+  color: red;
+  border: 1px solid red;
+  padding: 8px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.gallery-plates button:hover {
+  background-color: #fdd;
+}
+
+.gallery-plates .highlight {
+  background-color: #ff0;
+}
+
+.gallery-plates {
+  flex: 1;
+  text-align: left;
+}
+
+.gallery-plates .gallery-actions {
+  display: flex;
+  align-items: center;
+}
+
+.gallery-plates .star-icon {
+  width: 24px;
+  height: 24px;
+  margin: 0 20px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  color: #fca510;
+}

@@ -1,0 +1,79 @@
+.gallery-card ul {
+  padding: 0;
+  margin: 20px -20px;
+  list-style: none;
+}
+
+.gallery-card li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: auto;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ccc;
+  background-color: #fff;
+  list-style-type: none;
+}
+
+.gallery-card li:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.gallery-card li:hover {
+  background-color: #dbe4f8;
+}
+
+.gallery-card button {
+  background-color: #fff;
+  color: red;
+  border: 1px solid red;
+  padding: 8px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.gallery-card button:hover {
+  background-color: #fdd;
+}
+
+.gallery-card .highlight {
+  background-color: #ff0;
+}
+
+.gallery-card {
+  width: 350px;
+  flex: 1;
+  text-align: left;
+  color: #fff;
+  padding: 10px;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  background-color: #0a1a2d;
+}
+
+.gallery-card .gallery-actions {
+  display: flex;
+  align-items: center;
+}
+
+.gallery-card .star-icon {
+  width: 24px;
+  height: 24px;
+  margin: 0 20px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  color: #fca510;
+}
+
+.gallery-card img {
+  width: 350px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.gallery-card p {
+  padding: 0;
+  margin: 5px;
+  text-align: center;
+}

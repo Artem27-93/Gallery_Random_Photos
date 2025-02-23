@@ -1,0 +1,50 @@
+.gallery-bar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.gallery-bar label {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.gallery-bar input {
+  width: 80%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.gallery-bar button {
+  background-color: green;
+  color: #fff;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.gallery-bar button:hover {
+  background-color: lightgreen;
+}
+
+.gallery-bar .spinner {
+  animation: spinner 1s infinite linear;
+  margin-left: 10px;
+}
+
+@keyframes spinner {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

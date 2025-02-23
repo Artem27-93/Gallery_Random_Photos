@@ -1,0 +1,20 @@
+import GalleryBar from './components/GalleryBar/GalleryBar';
+import GalleryPlates from './components/GalleryPlates/GalleryPlates';
+import './App.css';
+
+//https://picsum.photos/
+function App() {
+  return (
+    <div className="App">
+      <section className="app-header">
+        <h1>Gallery App</h1>
+      </section>
+      <section className="app-main">
+        <GalleryBar />
+        <GalleryPlates />
+      </section>
+    </div>
+  );
+}
+
+export default App;
