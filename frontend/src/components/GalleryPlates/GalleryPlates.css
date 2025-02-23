@@ -1,5 +1,8 @@
 .gallery-plates {
   color: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .gallery-plates ul {

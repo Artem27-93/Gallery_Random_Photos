@@ -8,11 +8,13 @@ const GalleryPlates = () => {
   console.log('photos', photos);
   return (
     <div className="gallery-plates">
-      <hr />
-      <h3>Gallery plates</h3>
-      {photos.map((photo) => {
-        return <GalleryCard key={photo.id} {...photo} />;
-      })}
+      {photos.length ? (
+        photos.map((photo) => {
+          return <GalleryCard key={photo.id} {...photo} />;
+        })
+      ) : (
+        <h3>No added photos yet!</h3>
+      )}
     </div>
   );
 };

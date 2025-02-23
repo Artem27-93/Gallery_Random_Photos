@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <section className="app-header">
-        <h1>Gallery App</h1>
+        <h1>Gallery Photo App</h1>
       </section>
       <section className="app-main">
         <GalleryBar />

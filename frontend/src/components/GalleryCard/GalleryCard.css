@@ -1,28 +1,3 @@
-.gallery-card ul {
-  padding: 0;
-  margin: 20px -20px;
-  list-style: none;
-}
-
-.gallery-card li {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: auto;
-  padding: 10px 20px;
-  border-bottom: 1px solid #ccc;
-  background-color: #fff;
-  list-style-type: none;
-}
-
-.gallery-card li:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-.gallery-card li:hover {
-  background-color: #dbe4f8;
-}
-
 .gallery-card button {
   background-color: #fff;
   color: red;
@@ -43,13 +18,13 @@
 
 .gallery-card {
   width: 350px;
-  flex: 1;
   text-align: left;
   color: #fff;
   padding: 10px;
   border: 1px solid #fff;
   border-radius: 10px;
   background-color: #0a1a2d;
+  margin: 10px 20px;
 }
 
 .gallery-card .gallery-actions {
@@ -68,7 +43,7 @@
 
 .gallery-card img {
   width: 350px;
-  height: auto;
+  height: 250px;
   border-radius: 10px;
 }
 

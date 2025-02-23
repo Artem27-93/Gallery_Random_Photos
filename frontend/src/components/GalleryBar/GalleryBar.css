@@ -34,6 +34,14 @@
   background-color: lightgreen;
 }
 
+.gallery-bar button.btn-red {
+  background-color: red;
+}
+
+.gallery-bar button.btn-red:hover {
+  background-color: darkred;
+}
+
 .gallery-bar .spinner {
   animation: spinner 1s infinite linear;
   margin-left: 10px;
