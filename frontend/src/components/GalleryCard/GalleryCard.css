@@ -52,3 +52,20 @@
   margin: 5px;
   text-align: center;
 }
+
+.gallery-card .spinner {
+  animation: spinner 1s infinite linear;
+  margin-left: 10px;
+  font-size: 25px;
+  margin: auto;
+}
+
+@keyframes spinner {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
