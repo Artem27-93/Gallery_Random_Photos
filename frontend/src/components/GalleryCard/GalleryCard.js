@@ -8,7 +8,7 @@ import './GalleryCard.css';
 function GalleryCard({ id, download_url, author }) {
   const [loading, setLoading] = useState(true);
   return (
-    <Col>
+    <Col style={{ marginTop: 10 }}>
       <Card bg="dark" text="white">
         <Card.Img
           variant="top"

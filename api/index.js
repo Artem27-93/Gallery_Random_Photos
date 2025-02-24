@@ -11,6 +11,17 @@ function getRandomPhoto() {
   return randomPhoto;
 }
 
+function getRandomPhotos(num) {
+  const randomPhotos = [];
+  for (let i = 0; i < num; i++) {
+    let randomIndex = Math.floor(Math.random() * photosData.length);
+    let randomPhoto = photosData[randomIndex];
+    randomPhotos.push(randomPhoto);
+  }
+
+  return randomPhotos;
+}
+
 app.get('/random-photo', (req, res) => {
   res.json(getRandomPhoto());
 });
@@ -18,6 +29,12 @@ app.get('/random-photo', (req, res) => {
 app.get('/random-photo-delayed', (req, res) => {
   setTimeout(() => {
     res.json(getRandomPhoto());
+  }, 2000);
+});
+
+app.get('/random-photos-delayed', (req, res) => {
+  setTimeout(() => {
+    res.json(getRandomPhotos(8));
   }, 2000);
 });
 

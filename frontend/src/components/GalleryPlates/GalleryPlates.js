@@ -6,7 +6,7 @@ import GalleryCard from '../GalleryCard/GalleryCard';
 import './GalleryPlates.css';
 const GalleryPlates = () => {
   const photos = useSelector(selectPhotos);
-  console.log('photos', photos);
+
   return (
     <div className="gallery-plates">
       {photos.length ? (

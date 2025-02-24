@@ -1,10 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
 import {
   addPhoto,
-  fetchPhoto,
+  fetchPhotos,
   resetAllPhotos,
   selectIsLoadingViaAPI,
+  selectPhotos,
 } from '../../redux/slices/photoSlice.js';
+import { setError } from '../../redux/slices/errorSlice.js';
 import { Button } from 'react-bootstrap';
 import { FaSpinner } from 'react-icons/fa';
 import createPhotoWithId from '../../utils/createPhotoWithId.js';
@@ -13,8 +15,8 @@ import './GalleryBar.css';
 
 const GalleryBar = () => {
   const dispatch = useDispatch();
+  const allPhotos = useSelector(selectPhotos);
   const isLoadingViaAPI = useSelector(selectIsLoadingViaAPI);
-  console.log(isLoadingViaAPI);
   const handleAddRandomPhoto = () => {
     const randomIndex = Math.floor(Math.random() * data.length);
     const randomPhoto = data[randomIndex];
@@ -23,11 +25,13 @@ const GalleryBar = () => {
   };
 
   const handleResetAllPhotos = () => {
-    dispatch(resetAllPhotos());
+    allPhotos.length
+      ? dispatch(resetAllPhotos())
+      : dispatch(setError('Gallery already is empty!'));
   };
 
-  const handleAddRandomPhotoViaAPI = () => {
-    dispatch(fetchPhoto('http://localhost:4000/random-photo-delayed'));
+  const handleAddRandomPhotosViaAPI = () => {
+    dispatch(fetchPhotos('http://localhost:4000/random-photos-delayed'));
   };
 
   return (
@@ -35,12 +39,12 @@ const GalleryBar = () => {
       <div className="gallery-bar">
         <div className="wrapper-bar-btns">
           <Button variant="success" onClick={handleAddRandomPhoto}>
-            Get Photos
+            Get Photo
           </Button>
           <Button
             variant="outline-success"
             disabled={isLoadingViaAPI}
-            onClick={handleAddRandomPhotoViaAPI}
+            onClick={handleAddRandomPhotosViaAPI}
           >
             {isLoadingViaAPI ? (
               <>
@@ -56,7 +60,7 @@ const GalleryBar = () => {
           </Button>
         </div>
       </div>
-      <hr />
+      <hr style={{ color: 'white' }} />
     </>
   );
 };

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { setError } from './errorSlice';
 import createPhotoWithId from '../../utils/createPhotoWithId';
 
 const initialState = {
@@ -7,20 +8,21 @@ const initialState = {
   isLoadingViaAPI: false,
 };
 
-export const fetchPhoto = createAsyncThunk(
-  'photos/fetchPhoto',
+export const fetchPhotos = createAsyncThunk(
+  'photos/fetchPhotos',
   async (url, thunkAPI) => {
     try {
       const res = await axios.get(url);
       return res.data;
     } catch (error) {
-      console.log(error);
+      thunkAPI.dispatch(setError(error.message));
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
 
 const photoSlice = createSlice({
-  name: 'photos',
+  name: 'photo',
   initialState,
   reducers: {
     addPhoto: (state, action) => {
@@ -31,12 +33,17 @@ const photoSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchPhoto.pending, (state) => {
+    builder.addCase(fetchPhotos.pending, (state) => {
       state.isLoadingViaAPI = true;
     });
-    builder.addCase(fetchPhoto.fulfilled, (state, action) => {
+    builder.addCase(fetchPhotos.fulfilled, (state, action) => {
       state.isLoadingViaAPI = false;
-      state.photos.push(createPhotoWithId(action.payload));
+      action.payload.forEach((element) => {
+        state.photos.push(createPhotoWithId(element));
+      });
+    });
+    builder.addCase(fetchPhotos.rejected, (state) => {
+      state.isLoadingViaAPI = false;
     });
   },
 });
