@@ -1,5 +1,6 @@
 import GalleryBar from './components/GalleryBar/GalleryBar';
 import GalleryPlates from './components/GalleryPlates/GalleryPlates';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 //https://picsum.photos/

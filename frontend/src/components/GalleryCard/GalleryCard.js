@@ -1,26 +1,33 @@
 import { useState } from 'react';
 import { FaSpinner } from 'react-icons/fa';
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+
 import './GalleryCard.css';
 
-const GalleryCard = ({ download_url, author }) => {
+function GalleryCard({ id, download_url, author }) {
   const [loading, setLoading] = useState(true);
   return (
-    <div className="gallery-card">
-      <img
-        src={download_url}
-        alt="empty"
-        onLoad={(e) => {
-          setLoading(false);
-        }}
-      />
-      <div
-        className="caption"
-        style={{ display: 'flex', justifyContent: 'center' }}
-      >
-        {loading ? <FaSpinner className="spinner" /> : <p>Autor: {author}</p>}
-      </div>
-    </div>
+    <Col>
+      <Card bg="dark" text="white">
+        <Card.Img
+          variant="top"
+          src={download_url}
+          onLoad={(e) => {
+            setLoading(false);
+          }}
+        />
+
+        <Card.Body>
+          {loading ? (
+            <FaSpinner className="spinner" />
+          ) : (
+            <Card.Text>Autor: {author}</Card.Text>
+          )}
+        </Card.Body>
+      </Card>
+    </Col>
   );
-};
+}
 
 export default GalleryCard;
