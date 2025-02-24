@@ -20,7 +20,7 @@
 }
 
 .gallery-bar .wrapper-bar-btns {
-  width: 300px;
+  width: 500px;
   display: flex;
   justify-content: space-around;
 }
