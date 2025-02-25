@@ -8,7 +8,8 @@ import {
 } from '../../redux/slices/photoSlice.js';
 import { setError } from '../../redux/slices/errorSlice.js';
 import { Button } from 'react-bootstrap';
-import { FaSpinner } from 'react-icons/fa';
+import Spinner from '../Spinner.js';
+// import { FaSpinner } from 'react-icons/fa';
 import createPhotoWithId from '../../utils/createPhotoWithId.js';
 import data from '../../data/data.json';
 import './GalleryBar.css';
@@ -48,8 +49,8 @@ const GalleryBar = () => {
           >
             {isLoadingViaAPI ? (
               <>
-                <span>is loading...</span>
-                <FaSpinner className="spinner" />
+                <Spinner className="spinner" />
+                <span>Loading...</span>
               </>
             ) : (
               <span>Get Photos via API</span>
