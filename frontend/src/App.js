@@ -5,15 +5,14 @@ import ModalFullScreenView from './components/ModalFullScreenView';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
-//https://picsum.photos/
 function App() {
   return (
     <div className="App">
       <section className="app-header">
         <h2>Gallery Photo App</h2>
+        <GalleryBar />
       </section>
       <section className="app-main">
-        <GalleryBar />
         <GalleryPlates />
       </section>
       <ModalFullScreenView />

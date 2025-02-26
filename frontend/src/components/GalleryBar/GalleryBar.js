@@ -8,17 +8,19 @@ import {
   selectPhotos,
 } from '../../redux/slices/photoSlice.js';
 import { setError } from '../../redux/slices/errorSlice.js';
+import {
+  onlyFavouriteFilter,
+  selectOnlyFavouriteFilter,
+} from '../../redux/slices/filterSlice.js';
 import { Button } from 'react-bootstrap';
 import Spinner from '../Spinner.js';
-// import { FaSpinner } from 'react-icons/fa';
-// import createPhotoWithId from '../../utils/createPhotoWithId.js';
-// import data from '../../data/data.json';
 import './GalleryBar.css';
 import { useEffect } from 'react';
 
 const GalleryBar = () => {
   const dispatch = useDispatch();
   const allPhotos = useSelector(selectPhotos);
+  const selectOnlyFavourite = useSelector(selectOnlyFavouriteFilter);
   const isLoadingViaAPI = useSelector(selectIsLoadingViaAPI);
   const isLoadingViaLocalHost = useSelector(selectIsLoadingViaLocalHost);
   const handleAddRandomPhotoViaAPI = () => {
@@ -36,6 +38,10 @@ const GalleryBar = () => {
     dispatch(fetchPhotos('http://localhost:4000/random-photos-delayed'));
   };
 
+  const handleOnlyFavouritePhotos = () => {
+    dispatch(onlyFavouriteFilter());
+  };
+
   useEffect(() => {
     console.log('Launch after rendering once!');
     dispatch(fetchPhotos('http://localhost:4000/random-photos-delayed'));
@@ -45,6 +51,18 @@ const GalleryBar = () => {
     <>
       <div className="gallery-bar">
         <div className="wrapper-bar-btns">
+          <div className="wrapper-favourite-checkbox">
+            <input
+              style={{ marginRight: '5px' }}
+              id="is-favourite"
+              type="checkbox"
+              checked={selectOnlyFavourite}
+              onChange={handleOnlyFavouritePhotos}
+            />
+            <label style={{ cursor: 'pointer' }} htmlFor="is-favourite">
+              Favourite
+            </label>
+          </div>
           <Button
             variant="success"
             disabled={isLoadingViaAPI}
@@ -78,7 +96,6 @@ const GalleryBar = () => {
           </Button>
         </div>
       </div>
-      <hr style={{ color: 'white' }} />
     </>
   );
 };

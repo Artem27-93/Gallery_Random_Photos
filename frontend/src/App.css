@@ -7,17 +7,22 @@
 }
 
 .app-header {
+  height: 100px;
   background-color: #0a1a2d;
   color: #fff;
   width: 100%;
   margin-bottom: 20px;
   text-align: center;
   padding: 5px;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
 }
 
 .app-main {
   width: 80%;
   margin: 0 auto;
+  margin-top: 100px;
 }
 
 .app-left-column {

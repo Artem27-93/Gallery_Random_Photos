@@ -69,3 +69,18 @@
     transform: rotate(360deg);
   }
 }
+
+.like-icon-filled {
+  position: absolute;
+  right: 10px;
+  font-size: 25px;
+  cursor: pointer;
+  color: #fca510;
+}
+
+.like-icon-unfilled {
+  position: absolute;
+  right: 10px;
+  font-size: 25px;
+  cursor: pointer;
+}

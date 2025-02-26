@@ -45,6 +45,11 @@ const photoSlice = createSlice({
     resetAllPhotos: (state) => {
       return initialState;
     },
+    toggleFavourite: (state, action) => {
+      state.photos.forEach((photo) => {
+        if (photo.id === action.payload) photo.isFavourite = !photo.isFavourite;
+      });
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchPhoto.pending, (state) => {
@@ -75,7 +80,7 @@ const photoSlice = createSlice({
   },
 });
 
-export const { addPhoto, resetAllPhotos } = photoSlice.actions;
+export const { addPhoto, resetAllPhotos, toggleFavourite } = photoSlice.actions;
 export const selectPhotos = (state) => state.photo.photos;
 export const selectIsLoadingViaAPI = (state) => state.photo.isLoadingViaAPI;
 export const selectIsLoadingViaLocalHost = (state) =>
