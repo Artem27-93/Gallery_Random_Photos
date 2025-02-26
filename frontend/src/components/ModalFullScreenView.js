@@ -4,7 +4,6 @@ import { clearModal, selectModalState } from '../redux/slices/modalSlice';
 
 function ModalImg() {
   const selectModalHide = useSelector(selectModalState);
-  console.log(selectModalHide);
   const dispatch = useDispatch();
 
   const handleHideModal = () => {

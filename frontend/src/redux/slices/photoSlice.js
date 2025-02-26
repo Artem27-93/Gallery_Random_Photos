@@ -6,7 +6,21 @@ import createPhotoWithId from '../../utils/createPhotoWithId';
 const initialState = {
   photos: [],
   isLoadingViaAPI: false,
+  isLoadingViaLocalHost: false,
 };
+
+export const fetchPhoto = createAsyncThunk(
+  'photos/fetchPhoto',
+  async (url, thunkAPI) => {
+    try {
+      const res = await axios.get(url);
+      return res.data;
+    } catch (error) {
+      thunkAPI.dispatch(setError(error.message));
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
 
 export const fetchPhotos = createAsyncThunk(
   'photos/fetchPhotos',
@@ -33,17 +47,30 @@ const photoSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchPhotos.pending, (state) => {
+    builder.addCase(fetchPhoto.pending, (state) => {
       state.isLoadingViaAPI = true;
     });
-    builder.addCase(fetchPhotos.fulfilled, (state, action) => {
+    builder.addCase(fetchPhoto.fulfilled, (state, action) => {
       state.isLoadingViaAPI = false;
-      action.payload.forEach((element) => {
-        state.photos.push(createPhotoWithId(element));
-      });
+      state.photos.push(createPhotoWithId(action.payload));
+    });
+    builder.addCase(fetchPhoto.rejected, (state) => {
+      state.isLoadingViaAPI = false;
+    });
+
+    builder.addCase(fetchPhotos.pending, (state) => {
+      state.isLoadingViaLocalHost = true;
+    });
+    builder.addCase(fetchPhotos.fulfilled, (state, action) => {
+      state.isLoadingViaLocalHost = false;
+      if (Array.isArray(action.payload)) {
+        action.payload.forEach((element) => {
+          state.photos.push(createPhotoWithId(element));
+        });
+      }
     });
     builder.addCase(fetchPhotos.rejected, (state) => {
-      state.isLoadingViaAPI = false;
+      state.isLoadingViaLocalHost = false;
     });
   },
 });
@@ -51,5 +78,7 @@ const photoSlice = createSlice({
 export const { addPhoto, resetAllPhotos } = photoSlice.actions;
 export const selectPhotos = (state) => state.photo.photos;
 export const selectIsLoadingViaAPI = (state) => state.photo.isLoadingViaAPI;
+export const selectIsLoadingViaLocalHost = (state) =>
+  state.photo.isLoadingViaLocalHost;
 
 export default photoSlice.reducer;

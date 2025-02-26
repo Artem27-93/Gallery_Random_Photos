@@ -35,7 +35,7 @@ app.get('/random-photo-delayed', (req, res) => {
 app.get('/random-photos-delayed', (req, res) => {
   setTimeout(() => {
     res.json(getRandomPhotos(8));
-  }, 2000);
+  }, 1000);
 });
 
 const port = process.env.PORT || 4000;

@@ -1,7 +1,7 @@
 import GalleryBar from './components/GalleryBar/GalleryBar';
 import GalleryPlates from './components/GalleryPlates/GalleryPlates';
 import Error from './components/Error/Error';
-import ModalImg from './components/ModalImg';
+import ModalFullScreenView from './components/ModalFullScreenView';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
@@ -16,7 +16,7 @@ function App() {
         <GalleryBar />
         <GalleryPlates />
       </section>
-      <ModalImg />
+      <ModalFullScreenView />
       <Error />
     </div>
   );

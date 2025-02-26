@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import { FaSpinner } from 'react-icons/fa';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
-import { Button } from 'react-bootstrap';
 import { setImgToModal } from '../../redux/slices/modalSlice';
 
 import './GalleryCard.css';
@@ -26,13 +25,15 @@ function GalleryCard({ id, download_url, author }) {
             setLoading(false);
           }}
           onDoubleClick={() => handleShow('xxl-down')}
+          style={{ cursor: 'pointer' }}
+          title="Double click to fullscreen view"
         />
 
         <Card.Body>
           {loading ? (
             <FaSpinner className="spinner" />
           ) : (
-            <Card.Text>Autor: {author}</Card.Text>
+            <Card.Text>Author: {author}</Card.Text>
           )}
         </Card.Body>
       </Card>
