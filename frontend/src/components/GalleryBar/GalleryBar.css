@@ -20,7 +20,7 @@
 }
 
 .gallery-bar .wrapper-bar-btns {
-  width: 700px;
+  width: 600px;
   display: flex;
   justify-content: space-around;
 }
@@ -30,4 +30,21 @@
   justify-content: center;
   align-items: center;
   font-size: 20px;
+  margin: auto;
+}
+
+.gallery-bar .wrapper-btns {
+  display: flex;
+  justify-content: space-evenly;
+  width: 400px;
+}
+
+@media (max-width: 768px) {
+  .gallery-bar .wrapper-bar-btns {
+    width: 600px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
 }

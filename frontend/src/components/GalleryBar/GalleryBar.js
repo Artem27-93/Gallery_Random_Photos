@@ -23,9 +23,14 @@ const GalleryBar = () => {
   const selectOnlyFavourite = useSelector(selectOnlyFavouriteFilter);
   const isLoadingViaAPI = useSelector(selectIsLoadingViaAPI);
   const isLoadingViaLocalHost = useSelector(selectIsLoadingViaLocalHost);
+
   const handleAddRandomPhotoViaAPI = () => {
     const randomIndex = Math.floor(Math.random() * 1000);
     dispatch(fetchPhoto(`https://picsum.photos/id/${randomIndex}/info`));
+  };
+
+  const handleAddRandomPhotosListViaAPI = () => {
+    dispatch(fetchPhotos('https://picsum.photos/v2/list'));
   };
 
   const handleResetAllPhotos = () => {
@@ -42,10 +47,10 @@ const GalleryBar = () => {
     dispatch(onlyFavouriteFilter());
   };
 
-  useEffect(() => {
-    console.log('Launch after rendering once!');
-    dispatch(fetchPhotos('http://localhost:4000/random-photos-delayed'));
-  }, [dispatch]);
+  // useEffect(() => {
+  //   console.log('Launch after rendering once!');
+  //   dispatch(fetchPhotos('http://localhost:4000/random-photos-delayed'));
+  // }, [dispatch]);
 
   return (
     <>
@@ -63,37 +68,39 @@ const GalleryBar = () => {
               Favourite
             </label>
           </div>
-          <Button
-            variant="success"
-            disabled={isLoadingViaAPI}
-            onClick={handleAddRandomPhotoViaAPI}
-          >
-            {isLoadingViaAPI ? (
-              <>
-                <Spinner className="spinner" />
-                <span>Loading...</span>
-              </>
-            ) : (
-              <span>Get Photo via API</span>
-            )}
-          </Button>
-          <Button
-            variant="outline-success"
-            disabled={isLoadingViaLocalHost}
-            onClick={handleAddRandomPhotosViaLocalHost}
-          >
-            {isLoadingViaLocalHost ? (
-              <>
-                <Spinner className="spinner" />
-                <span>Loading...</span>
-              </>
-            ) : (
-              <span>Get 8 Photos from Local Host</span>
-            )}
-          </Button>
-          <Button variant="danger" onClick={handleResetAllPhotos}>
-            Reset All
-          </Button>
+          <div className="wrapper-btns">
+            <Button
+              variant="success"
+              disabled={isLoadingViaAPI}
+              onClick={handleAddRandomPhotoViaAPI}
+            >
+              {isLoadingViaAPI ? (
+                <>
+                  <Spinner className="spinner" />
+                  <span>Loading...</span>
+                </>
+              ) : (
+                <span>Get Photo</span>
+              )}
+            </Button>
+            <Button
+              variant="warning"
+              disabled={isLoadingViaLocalHost}
+              onClick={handleAddRandomPhotosListViaAPI}
+            >
+              {isLoadingViaLocalHost ? (
+                <>
+                  <Spinner className="spinner" />
+                  <span>Loading...</span>
+                </>
+              ) : (
+                <span>Get List of Photos</span>
+              )}
+            </Button>
+            <Button variant="danger" onClick={handleResetAllPhotos}>
+              Reset All
+            </Button>
+          </div>
         </div>
       </div>
     </>
