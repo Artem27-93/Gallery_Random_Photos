@@ -23,7 +23,7 @@ const GalleryPlates = () => {
           })}
         </Row>
       ) : (
-        <h3>No added photos yet!</h3>
+        <h4>No added photos yet!</h4>
       )}
     </div>
   );

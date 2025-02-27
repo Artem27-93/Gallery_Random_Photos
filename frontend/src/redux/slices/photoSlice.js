@@ -42,6 +42,12 @@ const photoSlice = createSlice({
     addPhoto: (state, action) => {
       return { ...state, photos: [...state.photos, action.payload] };
     },
+    deletePhoto: (state, action) => {
+      return {
+        ...state,
+        photos: state.photos.filter((photo) => photo.id !== action.payload),
+      };
+    },
     resetAllPhotos: (state) => {
       return initialState;
     },
@@ -80,7 +86,8 @@ const photoSlice = createSlice({
   },
 });
 
-export const { addPhoto, resetAllPhotos, toggleFavourite } = photoSlice.actions;
+export const { addPhoto, deletePhoto, resetAllPhotos, toggleFavourite } =
+  photoSlice.actions;
 export const selectPhotos = (state) => state.photo.photos;
 export const selectIsLoadingViaAPI = (state) => state.photo.isLoadingViaAPI;
 export const selectIsLoadingViaLocalHost = (state) =>
