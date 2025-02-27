@@ -12,7 +12,6 @@ const modalSlice = createSlice({
   initialState,
   reducers: {
     setImgToModal: (state, action) => {
-      console.log(action);
       return {
         ...state,
         show: true,

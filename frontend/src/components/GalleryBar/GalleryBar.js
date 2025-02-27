@@ -39,18 +39,17 @@ const GalleryBar = () => {
       : dispatch(setError('Gallery already is empty!'));
   };
 
-  const handleAddRandomPhotosViaLocalHost = () => {
-    dispatch(fetchPhotos('http://localhost:4000/random-photos-delayed'));
-  };
+  // const handleAddRandomPhotosViaLocalHost = () => {
+  //   dispatch(fetchPhotos('http://localhost:4000/random-photos-delayed'));
+  // };
 
   const handleOnlyFavouritePhotos = () => {
     dispatch(onlyFavouriteFilter());
   };
 
-  // useEffect(() => {
-  //   console.log('Launch after rendering once!');
-  //   dispatch(fetchPhotos('http://localhost:4000/random-photos-delayed'));
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(fetchPhotos('https://picsum.photos/v2/list'));
+  }, [dispatch]);
 
   return (
     <>

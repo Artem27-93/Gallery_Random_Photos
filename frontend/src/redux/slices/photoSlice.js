@@ -9,6 +9,16 @@ const initialState = {
   isLoadingViaLocalHost: false,
 };
 
+function shuffleArray(array) {
+  if (Array.isArray(array)) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
+  return array;
+}
+
 export const fetchPhoto = createAsyncThunk(
   'photos/fetchPhoto',
   async (url, thunkAPI) => {
@@ -27,7 +37,9 @@ export const fetchPhotos = createAsyncThunk(
   async (url, thunkAPI) => {
     try {
       const res = await axios.get(url);
-      return res.data;
+      let data = shuffleArray(res.data);
+      if (data.length > 12) data = data.slice(0, 12); //get only 12 elements of result array
+      return data;
     } catch (error) {
       thunkAPI.dispatch(setError(error.message));
       return thunkAPI.rejectWithValue(error);
