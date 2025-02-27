@@ -9,7 +9,8 @@ function App() {
   return (
     <div className="App">
       <section className="app-header">
-        <h2>Gallery Photo App</h2>
+        <h2 className="h2-custom">Gallery Random Photos</h2>
+        <hr className="hr-custom" />
         <GalleryBar />
       </section>
       <section className="app-main">
