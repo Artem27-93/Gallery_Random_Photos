@@ -64,7 +64,7 @@ const GalleryBar = () => {
               onChange={handleOnlyFavouritePhotos}
             />
             <label style={{ cursor: 'pointer' }} htmlFor="is-favourite">
-              Favourite
+              Favorite
             </label>
           </div>
           <div className="wrapper-btns">
