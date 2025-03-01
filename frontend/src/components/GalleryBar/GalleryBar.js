@@ -6,6 +6,7 @@ import {
   selectIsLoadingViaAPI,
   selectIsLoadingViaLocalHost,
   selectPhotos,
+  shufflePhotos,
 } from '../../redux/slices/photoSlice.js';
 import { setError } from '../../redux/slices/errorSlice.js';
 import {
@@ -47,9 +48,13 @@ const GalleryBar = () => {
     dispatch(onlyFavouriteFilter());
   };
 
-  useEffect(() => {
-    dispatch(fetchPhotos('https://picsum.photos/v2/list'));
-  }, [dispatch]);
+  const handleShufflePhotos = () => {
+    dispatch(shufflePhotos());
+  };
+
+  // useEffect(() => {
+  //   dispatch(fetchPhotos('https://picsum.photos/v2/list'));
+  // }, [dispatch]);
 
   return (
     <>
@@ -93,12 +98,19 @@ const GalleryBar = () => {
                   <span>Loading...</span>
                 </>
               ) : (
-                <span>Get List of Photos</span>
+                <span>Get Photos</span>
               )}
             </Button>
-            <Button variant="danger" onClick={handleResetAllPhotos}>
-              Reset All
-            </Button>
+            {allPhotos.length > 0 && (
+              <Button variant="danger" onClick={handleResetAllPhotos}>
+                Reset All
+              </Button>
+            )}
+            {allPhotos.length > 3 && (
+              <Button variant="info" onClick={handleShufflePhotos}>
+                Shuffle
+              </Button>
+            )}
           </div>
         </div>
       </div>

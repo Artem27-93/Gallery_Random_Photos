@@ -37,7 +37,8 @@
 .gallery-bar .wrapper-btns {
   display: flex;
   justify-content: space-evenly;
-  width: 400px;
+  width: 600px;
+  flex-wrap: wrap;
 }
 
 @media (max-width: 768px) {
