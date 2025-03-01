@@ -52,9 +52,9 @@ const GalleryBar = () => {
     dispatch(shufflePhotos());
   };
 
-  // useEffect(() => {
-  //   dispatch(fetchPhotos('https://picsum.photos/v2/list'));
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(fetchPhotos('https://picsum.photos/v2/list'));
+  }, [dispatch]);
 
   return (
     <>
