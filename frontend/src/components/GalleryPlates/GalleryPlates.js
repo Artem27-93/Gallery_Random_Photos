@@ -21,9 +21,10 @@ const GalleryPlates = () => {
   const filteredPhotos = photos.filter((photo) => {
     return onlyFavouriteFilter ? photo.isFavourite : true;
   });
+
   const formattedPhotos = filteredPhotos.map((photo) => ({
     ...photo,
-    src: photo.download_url, // або photo.imageUrl
+    src: photo.download_url,
     title: photo.author,
   }));
 
@@ -34,11 +35,24 @@ const GalleryPlates = () => {
     dispatch(deletePhoto(id));
   };
 
+  const renderCustomPhoto = ({ photo, wrapperStyle }) => (
+    <div style={{ ...wrapperStyle, position: 'relative' }}>
+      <img
+        src={photo.src}
+        alt="error"
+        width={photo.width}
+        height={photo.height}
+        loading="eager"
+      />
+    </div>
+  );
+
   return (
     <div className="gallery-plates">
       {formattedPhotos.length ? (
         <RowsPhotoAlbum
           photos={formattedPhotos}
+          renderPhoto={renderCustomPhoto}
           render={{
             // render image selection icon
             extras: (t, { photo }) => {
