@@ -4,6 +4,7 @@ const createPhotoWithId = (photo) => {
     ...photo,
     isFavourite: false,
     id: uuidv4(),
+    src: photo.download_url,
   };
 };
 

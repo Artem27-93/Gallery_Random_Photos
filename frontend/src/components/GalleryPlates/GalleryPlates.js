@@ -13,21 +13,14 @@ const GalleryPlates = () => {
   const photos = useSelector(selectPhotos); // array with photos
   const onlyFavouriteFilter = useSelector(selectOnlyFavouriteFilter); //sign only favourite filter
 
-  const handleShow = ({ src, title }) => {
-    dispatch(setImgToModal({ image: src, author: title }));
-  };
-
   //filtered array with photos
   const filteredPhotos = photos.filter((photo) => {
     return onlyFavouriteFilter ? photo.isFavourite : true;
   });
 
-  const formattedPhotos = filteredPhotos.map((photo) => ({
-    ...photo,
-    src: photo.download_url,
-    title: photo.author,
-  }));
-
+  const handleShow = ({ src, author }) => {
+    dispatch(setImgToModal({ image: src, author }));
+  };
   const handleCheckIsFavourite = ({ id }) => {
     dispatch(toggleFavourite(id));
   };
@@ -35,24 +28,11 @@ const GalleryPlates = () => {
     dispatch(deletePhoto(id));
   };
 
-  const renderCustomPhoto = ({ photo, wrapperStyle }) => (
-    <div style={{ ...wrapperStyle, position: 'relative' }}>
-      <img
-        src={photo.src}
-        alt="error"
-        width={photo.width}
-        height={photo.height}
-        loading="eager"
-      />
-    </div>
-  );
-
   return (
     <div className="gallery-plates">
-      {formattedPhotos.length ? (
+      {filteredPhotos.length ? (
         <RowsPhotoAlbum
-          photos={formattedPhotos}
-          renderPhoto={renderCustomPhoto}
+          photos={filteredPhotos}
           render={{
             // render image selection icon
             extras: (t, { photo }) => {
