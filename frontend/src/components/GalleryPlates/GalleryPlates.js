@@ -6,6 +6,7 @@ import { selectOnlyFavouriteFilter } from '../../redux/slices/filterSlice.js';
 import { setImgToModal } from '../../redux/slices/modalSlice';
 import { BsBookmarkHeart, BsBookmarkHeartFill, BsXLg } from 'react-icons/bs';
 import { toggleFavourite, deletePhoto } from '../../redux/slices/photoSlice';
+import StyledBoxImg from '../StyledBox/StyledBoxImg.js';
 
 import './GalleryPlates.css';
 const GalleryPlates = () => {
@@ -34,6 +35,8 @@ const GalleryPlates = () => {
         <RowsPhotoAlbum
           photos={filteredPhotos}
           render={{
+            button: (props) => <StyledBoxImg {...props} />,
+
             // render image selection icon
             extras: (t, { photo }) => {
               return (
